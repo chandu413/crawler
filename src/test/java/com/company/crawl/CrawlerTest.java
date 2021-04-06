@@ -7,16 +7,18 @@ public class CrawlerTest
 {
    private Crawler crawler;
    private WebPageDownloader webPageDownloader;
+   private LinksRetriever linksRetriever;
 
    @Before
    public void setUp() {
       webPageDownloader = new WebPageDownloader();
-      crawler = new Crawler(webPageDownloader);
+      linksRetriever = new LinksRetriever();
+      crawler = new Crawler(webPageDownloader, linksRetriever);
    }
 
    @Test
    public void shouldCrawlGivenUrl()
    {
-      crawler.crawl("https://www.producthunt.com/");
+      crawler.crawl("https://wiprodigital.com");
    }
 }
