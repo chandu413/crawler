@@ -7,8 +7,19 @@ public class Crawler
 {
    private final Logger log = LoggerFactory.getLogger(getClass().getName());
 
-   public void crawl(String url) {
+   private final WebPageDownloader webPageDownloader;
+
+   public Crawler(WebPageDownloader webPageDownloader)
+   {
+      this.webPageDownloader = webPageDownloader;
+   }
+
+   public void crawl(String url)
+   {
       log.info("Crawling start= {}", url);
+
+      String htmlPage = webPageDownloader.downloadPage(url);
+      log.debug("htmlPage= {}", htmlPage);
 
       log.info("Crawling finish= {}", url);
    }
